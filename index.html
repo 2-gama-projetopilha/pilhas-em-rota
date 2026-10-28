@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Script Chart.js -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -33,7 +33,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -71,7 +71,6 @@
             border-bottom-left-radius: 24px;
             border-bottom-right-radius: 24px;
             box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-            animation: fadeIn 0.8s ease-out;
             position: relative;
             overflow: hidden;
         }
@@ -109,20 +108,20 @@
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 2.1rem;
             color: var(--verde-limao);
             margin-bottom: 4px;
             font-weight: 700;
         }
 
         .subtitle {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             opacity: 0.95;
         }
 
         .badge-header {
             display: inline-block;
-            margin-top: 8px;
+            margin-top: 10px;
             background: rgba(255,255,255,0.18);
             padding: 4px 14px;
             border-radius: 20px;
@@ -132,43 +131,43 @@
         }
 
         nav {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 8px;
-            margin: 16px auto;
+            margin: 18px auto;
             max-width: 800px;
             padding: 0 10px;
-            flex-wrap: wrap;
         }
 
         .nav-btn {
             background-color: var(--verde-floresta);
             color: var(--texto-claro);
             border: none;
-            padding: 10px 14px;
-            border-radius: 25px;
+            padding: 10px 6px;
+            border-radius: 20px;
             font-weight: 600;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 6px;
-            flex: 1 1 22%;
             justify-content: center;
-            min-width: 120px;
+            gap: 4px;
             box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         }
 
-        .nav-btn:hover {
-            transform: translateY(-2px);
+        .nav-btn i {
+            font-size: 1rem;
+        }
+
+        .nav-btn:hover, .nav-btn:active {
             background-color: var(--verde-esmeralda);
         }
 
         .nav-btn.active {
             background-color: var(--verde-limao);
             color: var(--verde-floresta);
-            transform: scale(1.03);
             box-shadow: 0 4px 12px rgba(198, 223, 131, 0.5);
         }
 
@@ -199,7 +198,7 @@
             margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             border-bottom: 2px solid var(--creme);
             padding-bottom: 8px;
         }
@@ -209,7 +208,7 @@
             padding: 12px 14px;
             border-radius: 10px;
             margin-bottom: 12px;
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             border-left: 5px solid var(--verde-esmeralda);
             color: var(--verde-musgo);
         }
@@ -229,34 +228,37 @@
             width: 100%;
             height: 100%;
             border: 0;
+            transition: transform 0.4s ease;
         }
 
-        .region-nav-bar {
+        .region-bar {
             display: flex;
             gap: 6px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             overflow-x: auto;
             padding-bottom: 4px;
         }
 
         .region-btn {
-            background-color: var(--verde-floresta);
-            color: var(--verde-limao);
-            border: none;
-            padding: 7px 12px;
+            background-color: #E2E8F0;
+            color: var(--verde-floresta);
+            border: 1px solid #CBD5E1;
+            padding: 8px 12px;
             border-radius: 16px;
             font-size: 0.78rem;
             font-weight: 600;
-            white-space: nowrap;
             cursor: pointer;
-            transition: background 0.2s;
+            white-space: nowrap;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            transition: all 0.2s ease;
         }
 
-        .region-btn:hover {
+        .region-btn:hover, .region-btn.active {
             background-color: var(--verde-esmeralda);
+            color: #FFFFFF;
+            border-color: var(--verde-esmeralda);
         }
 
         .filter-bar {
@@ -275,7 +277,6 @@
             font-size: 0.78rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             gap: 5px;
@@ -302,29 +303,21 @@
             margin-bottom: 12px;
             border-left: 5px solid var(--verde-natural);
             box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             position: relative;
         }
 
         .ponto-item:hover {
             transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             border-left-color: var(--verde-esmeralda);
-        }
-
-        .ponto-item.highlight {
-            border-left-color: #D97706;
-            background-color: #FEF3C7;
-            transform: scale(1.02);
-            box-shadow: 0 0 14px rgba(217, 119, 6, 0.3);
         }
 
         .ponto-badge {
             position: absolute;
             top: 12px; right: 12px;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             padding: 2px 7px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
             background: #D1FAE5;
             color: var(--verde-esmeralda);
@@ -341,7 +334,7 @@
         }
 
         .ponto-item p {
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             color: var(--texto-escuro);
             margin-top: 3px;
         }
@@ -351,8 +344,7 @@
             border: 2px solid var(--verde-natural);
             border-radius: 16px;
             padding: 18px;
-            margin: 18px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            margin: 16px 0;
         }
 
         .calc-box h3 {
@@ -392,7 +384,7 @@
         .calc-results {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 8px;
             text-align: center;
         }
 
@@ -404,7 +396,7 @@
         }
 
         .result-card .num {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--verde-floresta);
         }
@@ -424,18 +416,13 @@
 
         .accordion-header {
             padding: 14px 16px;
-            background-color: var(--creme);
             font-weight: 600;
             color: var(--verde-floresta);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.92rem;
-        }
-
-        .accordion-header:hover {
-            background-color: #EFECE0;
+            font-size: 0.9rem;
         }
 
         .accordion-header i.arrow-icon {
@@ -456,7 +443,6 @@
 
         .accordion-item.active .accordion-content {
             display: block;
-            animation: fadeIn 0.3s ease-out;
         }
 
         .content-image {
@@ -487,13 +473,10 @@
             color: var(--verde-floresta);
             font-size: 0.88rem;
             margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .step-card p {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: #334155;
         }
 
@@ -506,7 +489,6 @@
             width: 100%;
             border-collapse: collapse;
             font-size: 0.82rem;
-            text-align: left;
         }
 
         table th {
@@ -530,84 +512,15 @@
         .metal-card {
             background: #FEF2F2;
             border-left: 4px solid #EF4444;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
             font-size: 0.78rem;
         }
 
-        .metal-card strong {
-            color: #991B1B;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .action-box {
-            background: linear-gradient(135deg, var(--verde-floresta), var(--verde-esmeralda));
-            color: var(--texto-claro);
-            padding: 16px;
-            border-radius: 12px;
-            margin-top: 14px;
-            font-size: 0.88rem;
-        }
-
-        .action-box h4 {
-            color: var(--verde-limao);
-            font-size: 1rem;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .share-box {
-            background: linear-gradient(135deg, #ECFDF5, #F7F5EC);
-            border: 2px solid var(--verde-esmeralda);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .share-box h3 {
-            color: var(--verde-floresta);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .share-btns-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 16px 0;
-        }
-
-        .share-btn {
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 0.88rem;
-            color: #FFFFFF;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: transform 0.2s;
-        }
-
-        .share-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-whatsapp { background-color: #25D366; }
-        .btn-copy { background-color: var(--verde-floresta); }
-        .btn-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .btn-qr { background-color: var(--verde-esmeralda); }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 16px;
         }
 
@@ -662,7 +575,7 @@
 
         .info-box h3 {
             color: var(--verde-floresta);
-            font-size: 1.02rem;
+            font-size: 1rem;
             margin-bottom: 6px;
         }
 
@@ -671,6 +584,65 @@
             margin: 10px 0;
             height: 220px;
             width: 100%;
+        }
+
+        /* ABA COMPARTILHAR */
+        .share-container {
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .share-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .share-btn {
+            background-color: #25D366;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .share-btn.copy-btn {
+            background-color: var(--verde-floresta);
+            color: var(--verde-limao);
+        }
+
+        .share-btn:active {
+            transform: scale(0.98);
+        }
+
+        .summary-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .summary-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #CBD5E1;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .summary-list li i {
+            color: var(--verde-esmeralda);
+            margin-top: 3px;
         }
 
         footer {
@@ -689,12 +661,12 @@
 
         @media (max-width: 600px) {
             h1 { font-size: 1.6rem; }
-            .nav-btn { flex: 1 1 45%; font-size: 0.78rem; padding: 8px 10px; }
+            nav { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+            .nav-btn { font-size: 0.75rem; padding: 8px 4px; }
             .stats-grid { grid-template-columns: 1fr; }
             .calc-results { grid-template-columns: 1fr; }
             .metals-grid { grid-template-columns: 1fr; }
             .recycling-steps { grid-template-columns: 1fr; }
-            .share-btns-grid { grid-template-columns: 1fr; }
             .map-container-box { height: 320px; }
         }
     </style>
@@ -721,18 +693,23 @@
         </div>
     </header>
 
+    <!-- NAVEGAÇÃO ENTRE ABAS -->
     <nav>
         <button class="nav-btn active" onclick="openSection('mapa', this)">
-            <i class="fa-solid fa-map-location-dot"></i> Mapa
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Mapa</span>
         </button>
         <button class="nav-btn" onclick="openSection('pesquisa', this)">
-            <i class="fa-solid fa-microscope"></i> Pesquisa
+            <i class="fa-solid fa-microscope"></i>
+            <span>Pesquisa</span>
         </button>
         <button class="nav-btn" onclick="openSection('escola', this)">
-            <i class="fa-solid fa-graduation-cap"></i> Projeto Escolar
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Projeto</span>
         </button>
         <button class="nav-btn" onclick="openSection('compartilhar', this)">
-            <i class="fa-solid fa-share-nodes"></i> Compartilhar
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>Compartilhar</span>
         </button>
     </nav>
 
@@ -745,21 +722,31 @@
             </h2>
             
             <div class="map-info">
-                <i class="fa-solid fa-info-circle"></i> Explore o mapa interativo do Google ou escolha uma região para navegar até o ponto mais próximo:
-            </div>
-
-            <!-- BOTÕES DE ATALHO DE REGIÃO -->
-            <div class="region-nav-bar">
-                <button class="region-btn" onclick="focarPonto('ponto-centro')"><i class="fa-solid fa-city"></i> Centro Urbano</button>
-                <button class="region-btn" onclick="focarPonto('ponto-leste')"><i class="fa-solid fa-compass"></i> Região Leste</button>
-                <button class="region-btn" onclick="focarPonto('ponto-oeste')"><i class="fa-solid fa-compass"></i> Região Oeste</button>
-                <button class="region-btn" onclick="focarPonto('ponto-sul')"><i class="fa-solid fa-compass"></i> Região Sul</button>
-                <button class="region-btn" onclick="focarPonto('ponto-shopping')"><i class="fa-solid fa-bag-shopping"></i> Shopping</button>
+                <i class="fa-solid fa-info-circle"></i> Use os botões abaixo para focar nas regiões da cidade no mapa do Google:
             </div>
 
             <!-- GOOGLE MAPS DA CIDADE -->
             <div class="map-container-box">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59302.34827010419!2d-46.6028885!3d-21.7888125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c92c3a505f5dfd%3A0x6b9d62d2bc0f5d0!2sPo%C3%A7os%20de%20Caldas%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe id="googleMapIframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59302.34827010419!2d-46.6028885!3d-21.7888125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c92c3a505f5dfd%3A0x6b9d62d2bc0f5d0!2sPo%C3%A7os%20de%20Caldas%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <!-- BOTÕES PARA FOCAR NAS REGIÕES NO MAPA -->
+            <div class="region-bar">
+                <button class="region-btn active" onclick="carregarRegiaoMapa('visão geral', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59302.34827010419!2d-46.6028885!3d-21.7888125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c92c3a505f5dfd%3A0x6b9d62d2bc0f5d0!2sPo%C3%A7os%20de%20Caldas%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr', this)">
+                    <i class="fa-solid fa-globe"></i> Poços de Caldas (Geral)
+                </button>
+                <button class="region-btn" onclick="carregarRegiaoMapa('centro', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14825.21586738596!2d-46.568000!3d-21.788000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c92c39fa421e43%3A0x86bb117c77d56e0!2sCentro%2C%20Po%C3%A7os%20de%20Caldas%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000001!5m2!1spt-BR!2sbr', this)">
+                    <i class="fa-solid fa-city"></i> Centro
+                </button>
+                <button class="region-btn" onclick="carregarRegiaoMapa('zona leste', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14824.80000000000!2d-46.538000!3d-21.782000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c92c81a2982efb%3A0x897914e7a2b9e693!2sParque%20Primavera%2C%20Po%C3%A7os%20de%20Caldas%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000002!5m2!1spt-BR!2sbr', this)">
+                    <i class="fa-solid fa-compass"></i> Região Leste
+                </button>
+                <button class="region-btn" onclick="carregarRegiaoMapa('zona oeste', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14825.00000000000!2d-46.582000!3d-21.781000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c92c13d7cd1235%3A0x6b772c67ad7818e8!2sJardim%20Country%20Club%2C%20Po%C3%A7os%20de%20Caldas%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000003!5m2!1spt-BR!2sbr', this)">
+                    <i class="fa-solid fa-compass"></i> Região Oeste
+                </button>
+                <button class="region-btn" onclick="carregarRegiaoMapa('zona sul', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14823.00000000000!2d-46.565000!3d-21.815000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c92c431b8180c5%3A0x8a927a44f5bf77ab!2sCohab%2C%20Po%C3%A7os%20de%20Caldas%20-%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000004!5m2!1spt-BR!2sbr', this)">
+                    <i class="fa-solid fa-compass"></i> Região Sul
+                </button>
             </div>
 
             <!-- FILTRO RÁPIDO DE PONTOS -->
@@ -809,39 +796,39 @@
                 <p><i class="fa-regular fa-clock"></i> <strong>Horário:</strong> Segunda a sexta-feira, das 8h às 16h45.</p>
             </div>
 
-            <div class="ponto-item centro comercio" id="ponto-drogaria-assis">
+            <div class="ponto-item centro comercio">
                 <span class="ponto-badge"><i class="fa-solid fa-capsules"></i> FARMÁCIA</span>
                 <h3><i class="fa-solid fa-prescription-bottle-medical"></i> 6. Drogaria São Paulo (Assis Figueiredo)</h3>
                 <p><i class="fa-solid fa-location-dot"></i> <strong>Endereço:</strong> Rua Assis Figueiredo, nº 925, Centro.</p>
-                <p><i class="fa-regular fa-clock"></i> <strong>Horário:</strong> Segunda a sexta-feira, das 6h às 23h; Fim de semana, das 7h às 23h.</p>
+                <p><i class="fa-regular fa-clock"></i> <strong>Horário:</strong> Segunda a sexta-feira, das 6h às 23h; Sábados e domingos, das 7h às 23h.</p>
             </div>
 
-            <div class="ponto-item centro comercio" id="ponto-drogaria-joao">
+            <div class="ponto-item centro comercio">
                 <span class="ponto-badge"><i class="fa-solid fa-capsules"></i> FARMÁCIA</span>
                 <h3><i class="fa-solid fa-prescription-bottle-medical"></i> 7. Drogaria São Paulo (João Pinheiro)</h3>
                 <p><i class="fa-solid fa-location-dot"></i> <strong>Endereço:</strong> Avenida João Pinheiro, nº 258, Centro.</p>
                 <p><i class="fa-regular fa-clock"></i> <strong>Horário:</strong> Segunda a domingo, das 7h às 23h.</p>
             </div>
 
-            <div class="ponto-item centro comercio" id="ponto-drogaria-24h">
+            <div class="ponto-item centro comercio">
                 <span class="ponto-badge"><i class="fa-solid fa-clock"></i> 24 HORAS</span>
                 <h3><i class="fa-solid fa-prescription-bottle-medical"></i> 8. Drogaria São Paulo (24 Horas)</h3>
                 <p><i class="fa-solid fa-location-dot"></i> <strong>Endereço:</strong> Rua Assis Figueiredo, nº 1.279, Centro.</p>
                 <p><i class="fa-regular fa-clock"></i> <strong>Horário:</strong> Funcionamento 24 horas.</p>
             </div>
 
-            <div class="ponto-item centro comercio" id="ponto-casas-bahia">
+            <div class="ponto-item centro comercio">
                 <span class="ponto-badge"><i class="fa-solid fa-store"></i> LOJA</span>
                 <h3><i class="fa-solid fa-store"></i> 9. Casas Bahia</h3>
                 <p><i class="fa-solid fa-location-dot"></i> <strong>Endereço:</strong> Avenida Francisco Salles, nº 587, Centro.</p>
                 <p><i class="fa-regular fa-clock"></i> <strong>Horário:</strong> Segunda a sexta-feira, das 9h às 18h.</p>
             </div>
 
-            <div class="ponto-item centro comercio" id="ponto-magalu-centro">
+            <div class="ponto-item centro comercio">
                 <span class="ponto-badge"><i class="fa-solid fa-store"></i> LOJA</span>
                 <h3><i class="fa-solid fa-store"></i> 10. Magazine Luiza (Centro)</h3>
                 <p><i class="fa-solid fa-location-dot"></i> <strong>Endereço:</strong> Rua Assis Figueiredo, nº 1.132, Centro.</p>
-                <p><i class="fa-regular fa-clock"></i> <strong>Horário:</strong> Segunda a sexta, das 9h às 18h; Sábado, das 9h às 15h.</p>
+                <p><i class="fa-regular fa-clock"></i> <strong>Horário:</strong> Segunda a sexta-feira, das 9h às 18h; Sábado, das 9h às 15h.</p>
             </div>
 
             <div class="ponto-item comercio" id="ponto-shopping">
@@ -952,7 +939,7 @@
                     <i class="fa-solid fa-chevron-down arrow-icon"></i>
                 </div>
                 <div class="accordion-content">
-                    <p>O descarte inadequado de pilhas pode contaminar o solo e a água, afetando a saúde das pessoas e a qualidade de vida das comunidades próximas às áreas contaminadas. Por isso, é essential informar a população sobre esses riscos e ampliar o acesso a pontos de coleta adequados.</p>
+                    <p>O descarte inadequado de pilhas pode contaminar o solo e a água, afetando a saúde das pessoas e a qualidade de vida das comunidades próximas às áreas contaminadas. Por isso, é essencial informar a população sobre esses riscos e ampliar o acesso a pontos de coleta adequados.</p>
                     
                     <div class="action-box">
                         <h4><i class="fa-solid fa-hands-holding-circle"></i> Pequenas atitudes geram grandes mudanças!</h4>
@@ -1042,29 +1029,48 @@
             </div>
         </section>
 
-        <!-- SEÇÃO 4: COMPARTILHAR E ENGAJAMENTO -->
+        <!-- ABA 4: COMPARTILHAR E RESUMO -->
         <section id="compartilhar" class="section-card">
             <h2 class="section-title">
-                <i class="fa-solid fa-bullhorn"></i> Divulgue e Faça a Diferença
+                <i class="fa-solid fa-share-nodes"></i> Compartilhar o Projeto
             </h2>
 
-            <div class="share-box">
-                <h3><i class="fa-solid fa-heart-circle-check" style="color:var(--verde-esmeralda)"></i> Espalhe esta Causa!</h3>
-                <p style="font-size: 0.88rem; color: #444;">Ajude Poços de Caldas a continuar limpa e livre da poluição por metais pesados. Compartilhe o aplicativo com seus amigos e familiares:</p>
+            <div class="share-container">
+                <p style="font-size: 0.9rem; color: #444;">
+                    Espalhe a conscientização ambiental! Compartilhe o aplicativo com amigos, familiares e redes sociais para incentivar o descarte correto de pilhas em Poços de Caldas:
+                </p>
 
-                <div class="share-btns-grid">
-                    <button class="share-btn btn-whatsapp" onclick="compartilharWhatsapp()">
-                        <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> WhatsApp
+                <div class="share-buttons">
+                    <button class="share-btn copy-btn" onclick="copiarLinkSite()">
+                        <i class="fa-solid fa-link"></i> <span id="btnCopyText">Copiar Link do Site</span>
                     </button>
-                    <button class="share-btn btn-copy" onclick="copiarLink()">
-                        <i class="fa-solid fa-link"></i> Copiar Link
-                    </button>
+                    <a id="btnWhatsappShare" class="share-btn" href="#" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Compartilhar no WhatsApp
+                    </a>
                 </div>
-            </div>
 
-            <div class="info-box" style="margin-top: 16px;">
-                <h3><i class="fa-solid fa-circle-info"></i> Resumo do Projeto</h3>
-                <p>O <strong>Pilhas em Rota</strong> une pesquisa acadêmica, tecnologia móvel e mapeamento geográfico para conectar a população aos pontos de logística reversa de Poços de Caldas - MG.</p>
+                <!-- RESUMO DO PROJETO -->
+                <div class="info-box" style="margin-top: 20px; text-align: left;">
+                    <h3><i class="fa-solid fa-file-contract"></i> Resumo do Projeto "Pilhas em Rota"</h3>
+                    <ul class="summary-list">
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span><strong>Objetivo:</strong> Facilitar a localização de coletores de pilhas e baterias em Poços de Caldas (MG), prevenindo a contaminação do solo e da água.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span><strong>Mapeamento:</strong> 11 pontos públicos e comerciais catalogados em todas as regiões da cidade (Centro, Leste, Oeste e Sul).</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span><strong>Educação Ambiental:</strong> Simulador de impacto em tempo real e conteúdos sobre a composição química e a reciclagem de metais.</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span><strong>Ação Escolar:</strong> Iniciativa estudantil com metas de arrecadação e engajamento da comunidade local.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -1088,6 +1094,12 @@
             item.classList.toggle('active');
         }
 
+        function carregarRegiaoMapa(nomeRegiao, urlMap, btn) {
+            document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('googleMapIframe').src = urlMap;
+        }
+
         function filtrarPontos(categoria, btn) {
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -1102,17 +1114,6 @@
             });
         }
 
-        function focarPonto(id) {
-            openSection('mapa', document.querySelectorAll('.nav-btn')[0]);
-            document.querySelectorAll('.ponto-item').forEach(el => el.classList.remove('highlight'));
-            const el = document.getElementById(id);
-            if (el) {
-                el.style.display = 'block';
-                el.classList.add('highlight');
-                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
         function calcularImpacto() {
             const qty = parseInt(document.getElementById('numPilhas').value) || 0;
             const agua = (qty * 34000).toLocaleString('pt-BR');
@@ -1121,21 +1122,23 @@
             document.getElementById('resSolo').innerText = solo + ' m²';
         }
 
-        function compartilharWhatsapp() {
-            const texto = encodeURIComponent("Conheça o aplicativo 'Pilhas em Rota' e encontre os pontos de descarte correto de pilhas e baterias em Poços de Caldas - MG!");
-            window.open(`https://api.whatsapp.com/send?text=${texto}`, '_blank');
-        }
-
-        function copiarLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                alert("Link do site copiado com sucesso! Agora você pode colar e enviar onde quiser.");
+        function copiarLinkSite() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const btnText = document.getElementById('btnCopyText');
+                btnText.innerText = "Link Copiado com Sucesso!";
+                setTimeout(() => { btnText.innerText = "Copiar Link do Site"; }, 2500);
             }).catch(() => {
-                alert("Copie o endereço da barra do seu navegador para compartilhar!");
+                alert("Link do site: " + window.location.href);
             });
         }
 
         document.addEventListener("DOMContentLoaded", function() {
             calcularImpacto();
+
+            const currentUrl = encodeURIComponent(window.location.href);
+            const mensagem = encodeURIComponent("Conheça o projeto Pilhas em Rota e encontre o ponto de descarte de pilhas mais próximo em Poços de Caldas: ") + currentUrl;
+            document.getElementById('btnWhatsappShare').href = "https://api.whatsapp.com/send?text=" + mensagem;
 
             const ctx = document.getElementById('meuGrafico').getContext('2d');
             new Chart(ctx, {
